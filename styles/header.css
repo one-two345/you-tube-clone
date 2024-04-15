@@ -1,0 +1,32 @@
+.header {
+  height: 55PX;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.left-section {
+  width: 150px;
+  background-color: blue;
+}
+.hamburger-menu {
+  height: 20px;
+}
+.youtube-logo {
+  height: 20px;
+}
+.middle-section {
+  flex: 1;
+  background-color: aqua;
+  margin-left: 70PX;
+  margin-right: 35px;
+  max-width: 500px;
+}
+.search-bar {
+  width: 70%;
+}
+.right-section {
+  width: 100px;
+  height: 20px;
+  background-color: red;
+}

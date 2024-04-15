@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDoList</title>
+</head>
+<body>
+  <input type="text" id="todo-title" >
+  <input type="date" id="date-picker">
+  <button onclick="addToDo()">መጨመር</button>
+  <div id="todo-list"></div>
+
+
+  <script>
+    let todos = [{todotitle: "vistit the other home",
+                    datepicker: " 07/06/2023 ",
+                    id: "id1"
+                   }, 
+                   {todotitle: "studying physics",
+                    datepicker: " 08/06/2023 ",
+                    id: "id2"
+                   }, 
+                   {todotitle: "go to consultancy",
+                    datepicker: " 09/08/2023 ",
+                    id: "id3"
+                   } 
+                  ];
+    
+    
+  
+    render();             
+    
+  
+    function addToDo(){
+      const todotitle= document.getElementById("todo-title").value;
+      const datepicker = document.getElementById("date-picker").value;
+      const id ='' + new Date().getTime();
+      todos.push({todotitle: todotitle,datepicker: datepicker,id: id});
+      render();
+
+    }
+
+    function deleteToDo(event){
+      const idtodelete = event.target.id;
+      todos = todos.filter(todo => {
+                                    if (todo.id === idtodelete)
+                                      return false;
+                                    else
+                                      return true;                            
+                                    }
+                           );
+      render();                          
+    }
+
+    function render() {
+      document.getElementById("todo-list").innerHTML = "";
+      todos.forEach(todo => { 
+                                
+
+                                 const container = document.createElement("div"); 
+                                 const deletebutton = document.createElement("button");
+                                 deletebutton.innerText = "Delete";
+                                 deletebutton.id = todo.id;
+                                 deletebutton.style = "margin-left: 10px;"
+                                 deletebutton.onclick = deleteToDo;
+                                 container.innerText =todo.todotitle + " " + todo.datepicker;
+                                 container.style = "padding-top:5px; "
+                                 
+                                 container.appendChild(deletebutton);
+                                 document.getElementById("todo-list").appendChild(container);
+                                 
+                                 
+                                 
+                                });
+      
+    }
+
+    
+  </script>
+  
+</body>
+</html>
